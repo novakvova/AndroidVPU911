@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Atb.Web.Migrations
 {
     [DbContext(typeof(AppEFContext))]
-    [Migration("20220327072322_Begin base entity")]
+    [Migration("20220327101442_Begin base entity")]
     partial class Beginbaseentity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

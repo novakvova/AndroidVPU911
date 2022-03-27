@@ -6,13 +6,13 @@ namespace Atb.Web.Data.Entities.Identity
     public class AppUser : IdentityUser<long>
     {
         [StringLength(100)]
-        public string? FirstName { get; set; }
+        public string FirstName { get; set; }
         [StringLength(100)]
-        public string? SecondName { get; set; }
+        public string SecondName { get; set; }
         [StringLength(100)]
-        public string? Photo { get; set; }
+        public string Photo { get; set; }
         [StringLength(20)]
-        public string? Phone { get; set; }
-        public virtual ICollection<AppUserRole>? UserRoles { get; set; }
+        public string Phone { get; set; }
+        public virtual ICollection<AppUserRole> UserRoles { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace Atb.Web.Controllers
         [Route("register")]
         public async Task<IActionResult> Register([FromBody] RegisterViewModel model)
         {
-            return Ok();
+            return Ok(new { token = "Сало" });
         }
     }
 }
