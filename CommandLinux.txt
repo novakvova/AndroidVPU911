@@ -1,0 +1,5 @@
+sudo su - postgres
+psql
+create database vpu911anddb;
+create user vpu911anduser with encrypted password '$522*6$pBGss99&^^8djjdsLLdd33((us3$$)K$t!Ube22}xk';
+grant all privileges on database vpu911anddb to vpu911anduser;
