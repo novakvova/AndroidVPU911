@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">atb</string>
+    <string name="register">Реєстрація</string>
+    <string name="registered">Реєструватися</string>
+    <string name="email">Електронна пошта</string>
+    <string name="fristName">Ім\'я</string>
 </resources>

@@ -29,6 +29,11 @@ namespace Atb.Web.Validators
             //.Matches(@"\d").WithName("Password").WithMessage("Password must contain one or more digits.")
             //.Matches(@"[][""!@$%^&*(){}:;<>,.?/+_=|'~\\-]").WithName("Password").WithMessage("Password must contain one or more special characters.")
             //.Matches("^[^£# “”]*$").WithName("Password").WithMessage("Password must not contain the following characters £ # “” or spaces.");
+
+            RuleFor(x => x.FirstName)
+                .NotEmpty().WithMessage("Поле пароль є обов'язковим!")
+                .MinimumLength(2).WithMessage("Поле має мати міннімум 2 символів!");
+
             RuleFor(x => x.ConfirmPassword)
                 .NotEmpty().WithName("ConfirmPassword").WithMessage("Поле є обов'язковим!")
                  .Equal(x => x.Password).WithMessage("Поролі не співпадають!");
