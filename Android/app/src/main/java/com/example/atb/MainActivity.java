@@ -42,8 +42,10 @@ public class MainActivity extends AppCompatActivity {
                 .enqueue(new Callback<AccountResponseDTO>() {
                     @Override
                     public void onResponse(Call<AccountResponseDTO> call, Response<AccountResponseDTO> response) {
-                        AccountResponseDTO data = response.body();
-                        tvInfo.setText("response is good");
+                        if(response.isSuccessful()) {
+                            AccountResponseDTO data = response.body();
+                            tvInfo.setText("response is good");
+                        }
                     }
 
                     @Override
