@@ -6,6 +6,7 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -79,6 +80,17 @@ app.UseCors(options =>
     app.UseSwagger();
     app.UseSwaggerUI();
 //}
+
+var dir = Path.Combine(Directory.GetCurrentDirectory(), "uploads");
+if (!Directory.Exists(dir))
+{
+    Directory.CreateDirectory(dir);
+}
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(dir),
+    RequestPath = "/images"
+});
 
 app.UseAuthorization();
 
