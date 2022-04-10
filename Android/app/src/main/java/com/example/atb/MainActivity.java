@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.atb.account.RegisterActivity;
+import com.example.atb.account.UsersActivity;
 import com.example.atb.network.account.AccountService;
 import com.example.atb.network.account.dto.AccountResponseDTO;
 import com.example.atb.network.account.dto.RegisterDTO;
@@ -58,6 +59,15 @@ public class MainActivity extends AppCompatActivity {
             case R.id.m_register:
                 try {
                     intent = new Intent(MainActivity.this, RegisterActivity.class);
+                    startActivity(intent);
+                }
+                catch(Exception ex) {
+                    System.out.println("Problem "+ ex.getMessage());
+                }
+                return true;
+            case R.id.m_users:
+                try {
+                    intent = new Intent(MainActivity.this, UsersActivity.class);
                     startActivity(intent);
                 }
                 catch(Exception ex) {
