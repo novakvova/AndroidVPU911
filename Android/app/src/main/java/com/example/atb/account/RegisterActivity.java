@@ -14,10 +14,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.atb.MainActivity;
 import com.example.atb.R;
+import com.example.atb.application.HomeApplication;
 import com.example.atb.network.account.AccountService;
 import com.example.atb.network.account.dto.AccountResponseDTO;
 import com.example.atb.network.account.dto.RegisterDTO;
 import com.example.atb.network.account.dto.ValidationRegisterDTO;
+import com.example.atb.security.JwtSecurityService;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
@@ -124,8 +126,10 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onResponse(Call<AccountResponseDTO> call, Response<AccountResponseDTO> response) {
                         if (response.isSuccessful()) {
                             AccountResponseDTO data = response.body();
+                            JwtSecurityService jwtService = (JwtSecurityService) HomeApplication.getInstance();
+                            jwtService.saveJwtToken(data.getToken());
                             //tvInfo.setText("response is good");
-                            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                            Intent intent = new Intent(RegisterActivity.this, UsersActivity.class);
                             startActivity(intent);
                         } else {
                             try {

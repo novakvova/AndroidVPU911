@@ -1,6 +1,7 @@
 package com.example.atb.network.account;
 
 import com.example.atb.constants.Urls;
+import com.example.atb.network.interceptors.JWTInterceptor;
 
 import java.util.concurrent.TimeUnit;
 
@@ -14,9 +15,10 @@ public class AccountService {
 
     private AccountService() {
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .connectTimeout(20, TimeUnit.SECONDS)
-                .writeTimeout(20, TimeUnit.SECONDS)
-                .readTimeout(30, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .writeTimeout(60, TimeUnit.SECONDS)
+                .readTimeout(60, TimeUnit.SECONDS)
+                .addInterceptor(new JWTInterceptor())
                 .build();
         retrofit = new Retrofit.Builder()
                 .client(okHttpClient)

@@ -4,6 +4,7 @@ using Atb.Web.Helpers;
 using Atb.Web.Models;
 using Atb.Web.Services;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -49,6 +50,7 @@ namespace Atb.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("users")]
         public async Task<IActionResult> Users()
         {
