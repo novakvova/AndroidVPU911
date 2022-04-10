@@ -1,4 +1,5 @@
-﻿using Atb.Web.Data.Entities.Identity;
+﻿using Atb.Web.Data;
+using Atb.Web.Data.Entities.Identity;
 using Atb.Web.Helpers;
 using Atb.Web.Models;
 using Atb.Web.Services;
@@ -17,12 +18,15 @@ namespace Atb.Web.Controllers
         private readonly IMapper _mapper;
         private readonly IJwtTokenService _jwtTokenService;
         private readonly UserManager<AppUser> _userManager;
+        private readonly AppEFContext _context;
         public AccountController(UserManager<AppUser> userManager,
-            IJwtTokenService jwtTokenService, IMapper mapper)
+            IJwtTokenService jwtTokenService, IMapper mapper,
+            AppEFContext context)
         {
             _userManager = userManager;
             _mapper = mapper;
             _jwtTokenService = jwtTokenService;
+            _context = context;
         }
 
         [HttpPost]
@@ -42,6 +46,15 @@ namespace Atb.Web.Controllers
 
 
             return Ok(new { token = _jwtTokenService.CreateToken(user) });
+        }
+
+        [HttpGet]
+        [Route("users")]
+        public async Task<IActionResult> Users()
+        {
+            var list = _context.Users.Select(x => _mapper.Map<UserItemViewModel>(x)).ToList();
+
+            return Ok(list);
         }
     }
 }
