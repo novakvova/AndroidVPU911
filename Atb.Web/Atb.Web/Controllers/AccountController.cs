@@ -58,5 +58,37 @@ namespace Atb.Web.Controllers
 
             return Ok(list);
         }
+        /// <summary>
+        /// Вхід на сайт
+        /// </summary>
+        /// <param name="model">Подель із даними</param>
+        /// <returns>Повертає токен авторизації</returns>
+        /// <remarks>Awesomeness!</remarks>
+        /// <response code="200">Login user</response>
+        /// <response code="400">Login has missing/invalid values</response>
+        /// <response code="500">Oops! Can't create your login right now</response>
+        [HttpPost]
+        [Route("login")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TokenResponceViewModel))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> Login([FromBody]LoginViewModel model)
+        {
+            try
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                if (user != null)
+                {
+                    if (await _userManager.CheckPasswordAsync(user, model.Password))
+                    {
+                        return Ok(new TokenResponceViewModel  { token = _jwtTokenService.CreateToken(user) });
+                    }
+                }
+                return BadRequest(new { error = "Користувача не знайдено" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { error = "Помилка на сервері" });
+            }
+        }
     }
 }

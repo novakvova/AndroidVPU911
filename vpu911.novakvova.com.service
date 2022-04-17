@@ -3,7 +3,7 @@ Description=vpu911.novakvova.com
 
 [Service]
 WorkingDirectory=/var/www/android/vpu911.novakvova.com
-ExecStart=/usr/bin/dotnet Atb.Web.dll --urls=http://localhost:8085
+ExecStart=/usr/bin/dotnet Atb.Web.dll --urls=https://localhost:8085
 Restart=always
 # Restart service after 10 seconds if the dotnet service crashes:
 RestartSec=10

@@ -20,4 +20,27 @@
         public string Photo { get; set; }
         public string Phone { get; set; }
     }
+
+    public class LoginViewModel
+    {
+        /// <summary>
+        /// The email of the user
+        /// </summary>
+        /// <example>jon@gmail.com</example>
+        public string Email { get; set; }
+        /// <summary>
+        /// The password of the user
+        /// </summary>
+        /// <example>12345</example>
+        public string Password { get; set; }
+    }
+
+    public class TokenResponceViewModel
+    {
+        /// <summary>
+        /// token
+        /// </summary>
+        /// <example>eyJpZCI6IjEzMzciLCJ1c2VybmFtZSI6ImJpem9uZSIsImlhdCI6MTU5NDIwOTYwMCwicm9sZSI6InVzZXIifQ</example>
+        public string token { get; set; }
+    }
 }
