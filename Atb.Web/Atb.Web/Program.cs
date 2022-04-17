@@ -103,7 +103,11 @@ app.UseCors(options =>
 //if (app.Environment.IsDevelopment())
 //{
 app.UseSwagger();
-app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Atb.Web v1"));
+app.UseSwaggerUI(c => 
+{ 
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Atb.Web v1");
+    c.DisplayRequestDuration();
+});
 //}
 
 var dir = Path.Combine(Directory.GetCurrentDirectory(), "uploads");
