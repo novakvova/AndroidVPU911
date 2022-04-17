@@ -34,7 +34,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
 
 
@@ -45,39 +45,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent;
-        switch (item.getItemId()) {
-            case R.id.m_register:
-                try {
-                    intent = new Intent(MainActivity.this, RegisterActivity.class);
-                    startActivity(intent);
-                }
-                catch(Exception ex) {
-                    System.out.println("Problem "+ ex.getMessage());
-                }
-                return true;
-            case R.id.m_users:
-                try {
-                    intent = new Intent(MainActivity.this, UsersActivity.class);
-                    startActivity(intent);
-                }
-                catch(Exception ex) {
-                    System.out.println("Problem "+ ex.getMessage());
-                }
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-
-    }
 
 }

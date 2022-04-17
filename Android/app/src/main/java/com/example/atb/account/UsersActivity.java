@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.atb.BaseActivity;
 import com.example.atb.MainActivity;
 import com.example.atb.R;
 import com.example.atb.account.userscard.UserDTO;
@@ -22,7 +23,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UsersActivity extends AppCompatActivity {
+public class UsersActivity extends BaseActivity {
 
     private UsersAdapter adapter;
     private RecyclerView rcvUsers;

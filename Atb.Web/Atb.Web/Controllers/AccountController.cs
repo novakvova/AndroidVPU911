@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Drawing.Imaging;
 
 namespace Atb.Web.Controllers
@@ -55,7 +56,8 @@ namespace Atb.Web.Controllers
         public async Task<IActionResult> Users()
         {
             Thread.Sleep(2000);
-            var list = _context.Users.Select(x => _mapper.Map<UserItemViewModel>(x)).ToList();
+            var list = await _context.Users.Select(x => _mapper.Map<UserItemViewModel>(x))
+                .AsQueryable().ToListAsync();
 
             return Ok(list);
         }
@@ -88,7 +90,7 @@ namespace Atb.Web.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new { error = "Помилка на сервері" });
+                return BadRequest(new { error = "Помилка на сервері. "+ ex.Message });
             }
         }
     }

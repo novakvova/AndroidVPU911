@@ -7,4 +7,9 @@
     <string name="selectImage">Обрати фото</string>
     <string name="hello">Привіт</string>
     <string name="users">Користувачі</string>
+    <string name="logined">Війти</string>
+    <string name="password">Пароль</string>
+    <string name="login">Вхід</string>
+    <string name="logout">Вихід</string>
+    <string name="home">Головна</string>
 </resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Atb.Web</name>
+    </assembly>
+    <members>
+        <member name="M:Atb.Web.Controllers.AccountController.Login(Atb.Web.Models.LoginViewModel)">
+            <summary>
+            Вхід на сайт
+            </summary>
+            <param name="model">Подель із даними</param>
+            <returns>Повертає токен авторизації</returns>
+            <remarks>Awesomeness!</remarks>
+            <response code="200">Login user</response>
+            <response code="400">Login has missing/invalid values</response>
+            <response code="500">Oops! Can't create your login right now</response>
+        </member>
+        <member name="P:Atb.Web.Models.LoginViewModel.Email">
+            <summary>
+            The email of the user
+            </summary>
+            <example>jon@gmail.com</example>
+        </member>
+        <member name="P:Atb.Web.Models.LoginViewModel.Password">
+            <summary>
+            The password of the user
+            </summary>
+            <example>12345</example>
+        </member>
+        <member name="P:Atb.Web.Models.TokenResponceViewModel.token">
+            <summary>
+            token
+            </summary>
+            <example>eyJpZCI6IjEzMzciLCJ1c2VybmFtZSI6ImJpem9uZSIsImlhdCI6MTU5NDIwOTYwMCwicm9sZSI6InVzZXIifQ</example>
+        </member>
+    </members>
+</doc>

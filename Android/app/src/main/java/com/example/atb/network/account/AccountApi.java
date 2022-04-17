@@ -2,6 +2,7 @@ package com.example.atb.network.account;
 
 import com.example.atb.account.userscard.UserDTO;
 import com.example.atb.network.account.dto.AccountResponseDTO;
+import com.example.atb.network.account.dto.LoginDTO;
 import com.example.atb.network.account.dto.RegisterDTO;
 
 import java.util.List;
@@ -16,4 +17,7 @@ public interface AccountApi {
     public Call<AccountResponseDTO> register(@Body RegisterDTO model);
     @GET("/api/account/users")
     public Call<List<UserDTO>> users();
+    @POST("/api/account/login")
+    public Call<AccountResponseDTO> login(@Body LoginDTO model);
+
 }
