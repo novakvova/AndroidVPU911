@@ -12,6 +12,7 @@ import com.example.atb.account.userscard.UserDTO;
 import com.example.atb.account.userscard.UsersAdapter;
 import com.example.atb.network.account.AccountService;
 import com.example.atb.network.account.dto.AccountResponseDTO;
+import com.example.atb.utils.CommonUtils;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -36,7 +37,7 @@ public class UsersActivity extends BaseActivity {
         rcvUsers.setHasFixedSize(true);
         rcvUsers.setLayoutManager(new GridLayoutManager(this, 2,
                 LinearLayoutManager.VERTICAL, false));
-
+        CommonUtils.showLoading(this);
         AccountService.getInstance()
                 .jsonApi()
                 .users()
@@ -48,11 +49,12 @@ public class UsersActivity extends BaseActivity {
                             adapter=new UsersAdapter(response.body());
                             rcvUsers.setAdapter(adapter);
                         }
+                        CommonUtils.hideLoading();
                     }
 
                     @Override
                     public void onFailure(Call<List<UserDTO>> call, Throwable t) {
-
+                        CommonUtils.hideLoading();
                     }
                 });
 
