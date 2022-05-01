@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Atb.Web.Migrations
 {
     [DbContext(typeof(AppEFContext))]
-    [Migration("20220327101442_Begin base entity")]
-    partial class Beginbaseentity
+    [Migration("20220501091021_Add-Simple Db")]
+    partial class AddSimpleDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

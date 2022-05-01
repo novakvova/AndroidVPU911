@@ -19,9 +19,12 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+//var serverVersion = new MySqlServerVersion(ServerVersion.AutoDetect(connectionString));
+//var serverVersion = new MariaDbServerVersion(ServerVersion.AutoDetect(connectionString));
 builder.Services.AddDbContext<AppEFContext>(options =>
-   options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
-    //options.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnection")));
+   options.UseNpgsql(connectionString));
+   //options.UseMySql(connectionString, serverVersion));
 // Add services to the container.
 
 builder.Services.AddIdentity<AppUser, AppRole>(options =>

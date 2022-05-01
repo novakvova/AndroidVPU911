@@ -1,4 +1,5 @@
-﻿using Atb.Web.Data.Entities.Identity;
+﻿using Atb.Web.Data.Entities;
+using Atb.Web.Data.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,9 @@ namespace Atb.Web.Data
             base(options)
         {
         }
+
+        public DbSet<ProductEntity> Products { get; set; }
+        public DbSet<ProductImageEntity> ProductImages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

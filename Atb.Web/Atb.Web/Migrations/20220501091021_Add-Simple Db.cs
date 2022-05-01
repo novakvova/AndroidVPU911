@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Atb.Web.Migrations
 {
-    public partial class Beginbaseentity : Migration
+    public partial class AddSimpleDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
