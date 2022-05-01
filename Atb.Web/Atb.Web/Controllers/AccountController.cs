@@ -64,6 +64,7 @@ namespace Atb.Web.Controllers
 
             return Ok(list);
         }
+
         /// <summary>
         /// Вхід на сайт
         /// </summary>
@@ -77,19 +78,19 @@ namespace Atb.Web.Controllers
         [Route("login")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TokenResponceViewModel))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> Login([FromBody]LoginViewModel model)
+        public async Task<IActionResult> Login([FromBody] LoginViewModel model)
         {
             _logger.LogInformation("Login user");
-                var user = await _userManager.FindByEmailAsync(model.Email);
-                if (user != null)
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user != null)
+            {
+                //throw new AppException("Bad login user");
+                if (await _userManager.CheckPasswordAsync(user, model.Password))
                 {
-                    //throw new AppException("Bad login user");
-                    if (await _userManager.CheckPasswordAsync(user, model.Password))
-                    {
-                        return Ok(new TokenResponceViewModel  { token = _jwtTokenService.CreateToken(user) });
-                    }
+                    return Ok(new TokenResponceViewModel { token = _jwtTokenService.CreateToken(user) });
                 }
-                return BadRequest(new { error = "Користувача не знайдено" });
+            }
+            return BadRequest(new { error = "Користувача не знайдено" });
         }
     }
 }

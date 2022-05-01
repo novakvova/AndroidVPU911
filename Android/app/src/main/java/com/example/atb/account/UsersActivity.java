@@ -12,10 +12,14 @@ import com.example.atb.account.userscard.UserDTO;
 import com.example.atb.account.userscard.UsersAdapter;
 import com.example.atb.network.account.AccountService;
 import com.example.atb.network.account.dto.AccountResponseDTO;
+import com.example.atb.network.account.dto.ServerErrorDTO;
+import com.example.atb.network.account.dto.ValidationRegisterDTO;
 import com.example.atb.utils.CommonUtils;
+import com.google.gson.Gson;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +52,18 @@ public class UsersActivity extends BaseActivity {
                         {
                             adapter=new UsersAdapter(response.body());
                             rcvUsers.setAdapter(adapter);
+                        }
+                        if(response.code()>=500)
+                        {
+                            try {
+                                String json = response.errorBody().string();
+                                Gson gson = new Gson();
+                                ServerErrorDTO serverError = gson.fromJson(json, ServerErrorDTO.class);
+                                String message = serverError.getError();
+                                Toast.makeText(UsersActivity.this, message, Toast.LENGTH_SHORT).show();
+                            }
+                            catch(Exception ex) {}
+
                         }
                         CommonUtils.hideLoading();
                     }
