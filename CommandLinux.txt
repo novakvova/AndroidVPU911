@@ -8,10 +8,34 @@ create database pv915anddb;
 create user pvd915anduser with encrypted password '$522*6$pe33edd99BGss99&^^8djjdsLLdd33((us3$$)K$t!Ube22}xk';
 grant all privileges on database pv915anddb to pvd915anduser;
 
-create database dbspu911and;
-create user userspu911and with encrypted password '$54rrrOOldlw[wp4$BG)tte(8suIOK$t!Ube22}xk';
-grant all privileges on database dbspu911and to userspu911and;
+create database vpd912anddb;
+create user vpd912anduser with encrypted password '$522*6$peedd99BGss99&^^8djjdsLLdd33((us3$$)K$t!Ube22}xk';
+grant all privileges on database vpd912anddb to vpd912anduser;
+
+create database dbartem;
+create user userartem with encrypted password '$54d88s22EEdw^^&***Kjhh3@@(###G)K$t!Ube22}xk';
+grant all privileges on database dbartem to userartem;
 
 create database bv012npdb;
 create user bv012npuser with encrypted password '$522*6x$eudd(iduYYHekmdnNNud99BGss99&^^8djjdsLLdd33((us3$$)K$t!Ube22}xk';
 grant all privileges on database bv012npdb to bv012npuser;
+
+create database pu911anddb;
+create user pu911anduser with encrypted password '$522*6x$euud99BGss99&^^8djjdsLLdd33((us3$$)K$t!Ube22}xk';
+grant all privileges on database pu911anddb to vpu911anduser;
+
+create database pd913anddb;
+create user pd913anduser with encrypted password '$522*6$peedd99BGss99&^^8djjdsLtthhLdd33((us3$$)K$t!Ube22}xk';
+grant all privileges on database pd913anddb to pd913anduser;
+
+create database pv915anddb;
+create user pvd915anduser with encrypted password '$522*6$pe33edd99BGss99&^^8djjdsLLdd33((us3$$)K$t!Ube22}xk';
+grant all privileges on database pv915anddb to pvd915anduser;
+
+create database dbspu911and;
+create user userspu911and with encrypted password '$54rrrOOldlw[wp4$BG)K$t!Ube22}xk';
+grant all privileges on database dbspu911and to userspu911and;
+
+create database vovalohikadb;
+create user vovalohikauser with encrypted password '$522*6$pBGss99&^^8djjdsLLus3$$)K$t!Ube22}xk';
+grant all privileges on database vovalohikadb to vovalohikauser;

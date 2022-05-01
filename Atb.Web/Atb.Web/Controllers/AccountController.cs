@@ -1,5 +1,6 @@
 ﻿using Atb.Web.Data;
 using Atb.Web.Data.Entities.Identity;
+using Atb.Web.Exceptions;
 using Atb.Web.Helpers;
 using Atb.Web.Models;
 using Atb.Web.Services;
@@ -21,14 +22,16 @@ namespace Atb.Web.Controllers
         private readonly IJwtTokenService _jwtTokenService;
         private readonly UserManager<AppUser> _userManager;
         private readonly AppEFContext _context;
+        private readonly ILogger<AccountController> _logger;
         public AccountController(UserManager<AppUser> userManager,
             IJwtTokenService jwtTokenService, IMapper mapper,
-            AppEFContext context)
+            AppEFContext context, ILogger<AccountController> logger)
         {
             _userManager = userManager;
             _mapper = mapper;
             _jwtTokenService = jwtTokenService;
             _context = context;
+            _logger = logger;
         }
 
         [HttpPost]
@@ -76,22 +79,17 @@ namespace Atb.Web.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Login([FromBody]LoginViewModel model)
         {
-            try
-            {
+            _logger.LogInformation("Login user");
                 var user = await _userManager.FindByEmailAsync(model.Email);
                 if (user != null)
                 {
+                    //throw new AppException("Bad login user");
                     if (await _userManager.CheckPasswordAsync(user, model.Password))
                     {
                         return Ok(new TokenResponceViewModel  { token = _jwtTokenService.CreateToken(user) });
                     }
                 }
                 return BadRequest(new { error = "Користувача не знайдено" });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { error = "Помилка на сервері. "+ ex.Message });
-            }
         }
     }
 }

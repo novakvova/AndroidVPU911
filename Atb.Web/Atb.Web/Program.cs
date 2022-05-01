@@ -1,9 +1,12 @@
 using Atb.Web.Data;
 using Atb.Web.Data.Entities.Identity;
+using Atb.Web.Helpers;
 using Atb.Web.Mapper;
+using Atb.Web.Middleware;
 using Atb.Web.Services;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
@@ -96,6 +99,14 @@ builder.Services.AddCors();
 
 var app = builder.Build();
 
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+});
+
+
+app.UseLoggerFile();
+
 app.UseCors(options =>
                 options.AllowAnyMethod().AllowAnyOrigin().AllowAnyHeader());
 
@@ -125,5 +136,9 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCustomExceptionHandler();
+
+app.SeedData();
 
 app.Run();
